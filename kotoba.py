@@ -23,6 +23,7 @@ dfs = [pd.read_excel(excel_file, sheet_name=sheet, usecols='B:C', header=0) for 
 for subheader, df in zip(subheaders, dfs):
     st.subheader(subheader)
     st.dataframe(df, use_container_width=True, )
+    st.markdown("---")
 
 
 
