@@ -5,7 +5,7 @@ import plotly.express as px
 ##from PIL import Image
 
 # Set page configuration
-st.set_page_config(page_title='Kotoba')##, layout='wide')
+st.set_page_config(page_title='Kotoba', layout='wide')
 
 # Set header and initial subheader
 st.header('Meaning')
