@@ -19,8 +19,8 @@ dfs = {subheader: pd.read_excel(excel_file, sheet_name=sheet, usecols='B:C', hea
 selected_subheader = st.sidebar.selectbox("Choose Lesson 📘", subheaders)
 
 st.sidebar.markdown("---")
-
 st.sidebar.image("nihon.jpg",)
+
 # Developer info with an emoji
 
 st.sidebar.markdown("Developed By [Thet Naung Hset](https://www.facebook.com/KoHset7k) 💻")
