@@ -22,7 +22,9 @@ dfs = [pd.read_excel(excel_file, sheet_name=sheet, usecols='B:C', header=0) for 
 # Display DataFrames
 for subheader, df in zip(subheaders, dfs):
     st.subheader(subheader)
-    st.dataframe(df, use_container_width=True)
+    st.dataframe(df, use_container_width=True, )
+
+
 
 # Footer
 footer = """
@@ -40,9 +42,16 @@ footer = """
         text-align: center;
         padding: 0px;
     }
+
+   .eyeqlp51 st-emotion-cache-1u2dcfn ex0cdmw0{       
+                    display: none;}
+
     </style>
+
     <div class="footer">
         <p>© 2024 Thet Naung Hset. All rights reserved.</p>
     </div>
     """
+
 st.markdown(footer, unsafe_allow_html=True)
+
