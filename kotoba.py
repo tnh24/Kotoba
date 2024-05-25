@@ -1,7 +1,7 @@
 import pandas as pd
 import streamlit as st
 import plotly.express as px
-from PIL import Image
+##from PIL import Image
 
 # Set page configuration
 st.set_page_config(page_title='Kotoba')##, layout='wide')
