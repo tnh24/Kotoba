@@ -27,15 +27,18 @@ for subheader, df in zip(subheaders, dfs):
 # Footer
 footer = """
     <style>
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
     .footer {
         position: fixed;
         left: 0;
         bottom: 0;
         width: 100%;
         background-color: #f1f1f1;
-        color: black;
+        color: blue;
         text-align: center;
-        padding: 5px;
+        padding: 0px;
     }
     </style>
     <div class="footer">
