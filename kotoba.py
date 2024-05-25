@@ -13,8 +13,8 @@ st.header('Meaning')
 
 ### Load Data
 excel_file = '1.xlsx'
-sheet_names = ['Data1', 'Data2', 'Data3', 'Data4']
-subheaders = ['だい １ か', 'だい 2 か', 'だい 3 か', 'だい 4 か']
+sheet_names = ['Data1', 'Data2', 'Data3', 'Data4', 'Data5', 'Data6']
+subheaders = ['だい １ か', 'だい 2 か', 'だい 3 か', 'だい 4 か', 'だい 5 か', 'だい 6 か']
 
 # Load data from each sheet
 dfs = [pd.read_excel(excel_file, sheet_name=sheet, usecols='B:C', header=0) for sheet in sheet_names]
