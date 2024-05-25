@@ -20,8 +20,11 @@ selected_subheader = st.sidebar.selectbox("Choose Lesson 📘", subheaders)
 
 st.sidebar.markdown("---")
 
+st.sidebar.image("nihon.jpg",)
 # Developer info with an emoji
+
 st.sidebar.markdown("Developed By [Thet Naung Hset](https://www.facebook.com/KoHset7k) 💻")
+st.sidebar.markdown("© 2024 Thet Naung Hset. All rights reserved. 🚀")
 
 # Display selected DataFrame
 st.subheader(selected_subheader)
@@ -48,9 +51,7 @@ footer = """
         display: none;
     }
     </style>
-    <div class="footer">
-        <p>© 2024 Thet Naung Hset. All rights reserved. 🚀</p>
-    </div>
+    
     """
 
 st.markdown(footer, unsafe_allow_html=True)
