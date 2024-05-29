@@ -6,10 +6,9 @@ from grammar import display_grammar
 st.set_page_config(page_title='Kotoba 🌐', layout='wide')
 
 # Set header
-#st.header("🧠 みんなの日本語 🧠")
 st.markdown("<h1 style='text-align: center;'>🧠 みんなの日本語 🧠</h1>", unsafe_allow_html=True)
 
-st.markdown("<br>", unsafe_allow_html=True)
+#st.markdown("<br>", unsafe_allow_html=True)
 # Sidebar for navigation
 selected_module = st.sidebar.selectbox("Choose Module 📘", ["Meaning", "Grammar"])
 
