@@ -23,8 +23,8 @@ def display_grammar():
     for index, row in df.iterrows():
         if pd.isna(row[0]):  # Check if the cell is empty
             st.markdown("<br>", unsafe_allow_html=True)
-        else:
-            centered_row = f"<div style='display: inline-block; width: 100%; text-align: left;'>{row[0]}</div>"
-            st.markdown(centered_row, unsafe_allow_html=True)
+        else:            
+            st.markdown(row[0])
+            
 
     st.markdown("---")
