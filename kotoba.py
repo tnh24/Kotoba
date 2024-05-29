@@ -9,11 +9,13 @@ st.header('Meaning 🧠')
 
 # File and sheet details
 excel_file = '1.xlsx'
-sheet_names = ['Data1', 'Data2', 'Data3', 'Data4', 'Data5', 'Data6', 'Data7', 'Verb']
-subheaders = ['だい １ か 📝', 'だい 2 か 📚', 'だい 3 か 🗒️', 'だい 4 か 🖋️', 'だい 5 か 📖', 'だい 6 か 📜', 'だい 7 か 📚', 'どうし 🖋️']
+sheet_names = ['Data1', 'Data2', 'Data3', 'Data4', 'Data5', 'Data6', 'Data7', 'Verb',]
+subheaders = ['だい １ か 📝', 'だい 2 か 📚', 'だい 3 か 🗒️', 'だい 4 か 🖋️', 'だい 5 か 📖', 'だい 6 か 📜', 'だい 7 か 📚', 'どうし 🖋️',  'ぶん　ぽう📜']
 
 # Load data from each sheet
-dfs = {subheader: pd.read_excel(excel_file, sheet_name=sheet, usecols='B:C', header=0) for subheader, sheet in zip(subheaders, sheet_names)}
+
+dfs = {subheader: pd.read_excel(excel_file, sheet_name=sheet, usecols='B:C', header=0, ) for subheader, sheet in zip(subheaders, sheet_names)}
+df = pd.read_excel(excel_file, sheet_name='Bonpoe', usecols='A', header=0)
 
 # Sidebar for navigation
 selected_subheader = st.sidebar.selectbox("Choose Lesson 📘", subheaders)
@@ -28,7 +30,16 @@ st.sidebar.markdown("© 2024 Thet Naung Hset. All rights reserved. 🚀")
 
 # Display selected DataFrame
 st.subheader(selected_subheader)
-st.dataframe(dfs[selected_subheader].reset_index(drop=True), use_container_width=True, height=500)
+if selected_subheader=='ぶん　ぽう📜':    
+    for index, row in df.iterrows():
+        if row.isna().any():
+            st.markdown("<br>", unsafe_allow_html=True)
+        else:
+            centered_row = ''.join([f"<div style='display: inline-block; width: 100%; text-align: left;'>{cell}</div>" for cell in row])
+            st.markdown(centered_row, unsafe_allow_html=True)
+
+else:
+    st.dataframe(dfs[selected_subheader].reset_index(drop=True), use_container_width=True, height=500, hide_index=1,)
 st.markdown("---")
 
 # Footer
