@@ -13,6 +13,8 @@ def display_meaning():
     # Sidebar for navigation
     selected_subheader = st.sidebar.selectbox("Choose Lesson 📘", subheaders)
 
+    st.markdown("<h2 style='text-align: center;'>📚ことば📚</h2>", unsafe_allow_html=True)
+
     st.subheader(selected_subheader)
     st.dataframe(dfs[selected_subheader].reset_index(drop=True), use_container_width=True, height=500, hide_index=True)
     st.markdown("---")
