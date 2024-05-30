@@ -4,8 +4,8 @@ import pandas as pd
 def display_grammar():
     # File and sheet details
     excel_file = '1.xlsx'
-    sheet_names = ['Bonpoe',]
-    subheaders = ['だい １ か 📝']
+    sheet_names = ['Bonpoe1', 'Bonpoe2', 'Bonpoe3']
+    subheaders = ['だい １ か 📝', 'だい 2 か 📚', 'だい 3 か 🗒️']
 
     # Sidebar for navigation
     selected_subheader = st.sidebar.selectbox("Choose Lesson 📘", subheaders)
