@@ -1,24 +1,30 @@
 import streamlit as st
 from meaning import display_meaning
 from grammar import display_grammar
+from home import display_home
 
 # Set page configuration
-st.set_page_config(page_title='Kotoba 🌐', layout='wide')
+st.set_page_config(page_title='Minano Nihongo', layout='wide', page_icon= '🇯🇵')
 
 # Set header
 st.markdown("<h1 style='text-align: center;'>🧠 みんなの日本語 🧠</h1>", unsafe_allow_html=True)
 
 #st.markdown("<br>", unsafe_allow_html=True)
 # Sidebar for navigation
-selected_module = st.sidebar.selectbox("Choose Module 📘", ["Meaning", "Grammar"])
+selected_module = st.sidebar.selectbox("Choose Module 🛰️", ["Home 🛖", "Meaning 🎑", "Grammar 🎫"])
 
 #st.sidebar.markdown("---")
 
 # Display selected module
-if selected_module == "Meaning":
+if selected_module == "Home 🛖":
+    display_home()
+    
+elif selected_module == "Meaning 🎑":
     display_meaning()
-elif selected_module == "Grammar":
+    
+elif selected_module == "Grammar 🎫":
     display_grammar()
+    
 
 st.sidebar.image("nihon.jpg",)
 
