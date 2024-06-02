@@ -20,15 +20,15 @@ def display_home():
     
     file_path = '1.xlsx'
 
-    display_table(file_path, 'hiragana', 'Hiragana Table')
-    display_table(file_path, 'dakuon', 'Da Ku On Table')
-    display_table(file_path, 'handakuon', 'Han Da Ku On Table')
-    display_table(file_path, 'youon', 'Yo U On Table', height=422)
+    display_table(file_path, 'hiragana', 'ひらがな Table')
+    display_table(file_path, 'dakuon', 'だくおん Table')
+    display_table(file_path, 'handakuon', 'はんだくおん On Table')
+    display_table(file_path, 'youon', 'ようおん Table', height=422)
 
-    display_table(file_path, 'katakana', 'Katakana Table', height=422)
-    display_table(file_path, 'kdakuon', 'Katakana Da Ku On Table')    
-    display_table(file_path, 'khandakuon', 'Katakana Han Da Ku On Table')
-    display_table(file_path, 'kyouon', 'Katakana Yo U On Table', height=422)
+    display_table(file_path, 'katakana', 'かたかな Table', height=422)
+    display_table(file_path, 'kdakuon', 'かたかな だくおん Table')    
+    display_table(file_path, 'khandakuon', 'かたかな はんだくおん Table')
+    display_table(file_path, 'kyouon', 'かたかな ようおん Table', height=422)
 
     st.write("""
     	The left sidebar contains Options for **Meaning & Grammar**.
