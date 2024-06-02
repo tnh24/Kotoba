@@ -28,3 +28,4 @@ def display_grammar():
             
 
     st.markdown("---")
+    st.balloons()

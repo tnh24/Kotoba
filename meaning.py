@@ -18,3 +18,4 @@ def display_meaning():
     st.subheader(selected_subheader)
     st.dataframe(dfs[selected_subheader].reset_index(drop=True), use_container_width=True, height=500, hide_index=True)
     st.markdown("---")
+    st.balloons()

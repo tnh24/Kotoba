@@ -18,12 +18,15 @@ selected_module = st.sidebar.selectbox("Choose Module 🛰️", ["Home 🛖", "M
 # Display selected module
 if selected_module == "Home 🛖":
     display_home()
+    st.balloons()
     
 elif selected_module == "Meaning 🎑":
     display_meaning()
+    st.balloons()
     
 elif selected_module == "Grammar 🎫":
     display_grammar()
+    st.balloons()
     
 
 st.sidebar.image("nihon.jpg",)
