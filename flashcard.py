@@ -35,19 +35,32 @@ def display_flashcard_quiz():
     st.markdown("<br>", unsafe_allow_html=True)
     st.markdown("<br>", unsafe_allow_html=True)
 
+    # Initialize session state variables if not already initialized
+    if "question_indices" not in st.session_state:
+        st.session_state.question_indices = []
+
     # Question and answer logic
     if question_button:
         # Randomly select question number
         question_index = random.randint(0, len(df) - 1)
+        # Check if the question index has been previously displayed
+        while question_index in st.session_state.question_indices:
+            question_index = random.randint(0, len(df) - 1)
         st.session_state.question_index = question_index        
         st.markdown(
-    f"""
-    <div style='text-align: center; border: 1px solid #ccc; padding: 10px; border-radius: 5px;'>
-        <h2>{df.iloc[question_index, 1]}</h2>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
+            f"""
+            <div style='text-align: center; border: 1px solid #ccc; padding: 10px; border-radius: 5px;'>
+                <h2>{df.iloc[question_index, 1]}</h2>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+        # Add the displayed question index to the list
+        st.session_state.question_indices.append(question_index)
+
+        # Reset the list if all questions have been displayed once
+        if len(st.session_state.question_indices) == len(df):
+            st.session_state.question_indices = []
 
         st.session_state.show_answer = False
 
@@ -55,14 +68,13 @@ def display_flashcard_quiz():
         if "question_index" in st.session_state:
             if not st.session_state.show_answer:
                 st.markdown(
-    f"""
-    <div style='text-align: center; border: 1px solid #ccc; padding: 10px; border-radius: 5px;'>
-        <h2>{df.iloc[st.session_state.question_index, 0]}</h2>
-    </div>
-    """,
-    unsafe_allow_html=True
-)
-                
+                    f"""
+                    <div style='text-align: center; border: 1px solid #ccc; padding: 10px; border-radius: 5px;'>
+                        <h2>{df.iloc[st.session_state.question_index, 0]}</h2>
+                    </div>
+                    """,
+                    unsafe_allow_html=True
+                )               
                 st.session_state.show_answer = True
             else:
                 st.warning("Answer already shown. Generate a new question.")
