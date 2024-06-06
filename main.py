@@ -2,6 +2,7 @@ import streamlit as st
 from meaning import display_meaning
 from grammar import display_grammar
 from home import display_home
+from flashcard import display_flashcard_quiz
 
 # Set page configuration
 st.set_page_config(page_title='Minano Nihongo', layout='wide', page_icon= '🇯🇵')
@@ -11,7 +12,7 @@ st.markdown("<h1 style='text-align: center;'>🧠 みんなの日本語 🧠</h1
 
 #st.markdown("<br>", unsafe_allow_html=True)
 # Sidebar for navigation
-selected_module = st.sidebar.selectbox("Choose Module 🛰️", ["Home 🛖", "Meaning 🎑", "Grammar 🎫"])
+selected_module = st.sidebar.selectbox("Choose Module 🛰️", ["Home 🛖", "Meaning 🎑", "Grammar 🎫", "Flash Card Quiz 🧠"])
 
 #st.sidebar.markdown("---")
 
@@ -27,6 +28,10 @@ elif selected_module == "Meaning 🎑":
 elif selected_module == "Grammar 🎫":
     display_grammar()
     st.balloons()
+
+elif selected_module == "Flash Card Quiz 🧠":
+    display_flashcard_quiz()
+    
     
 
 st.sidebar.image("nihon.jpg",)
