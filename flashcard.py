@@ -20,24 +20,71 @@ def display_flashcard_quiz():
     st.markdown("<br>", unsafe_allow_html=True)
     
     # Get the selected dataframe
-    df = dfs[selected_subheader]    
+    df = dfs[selected_subheader]
 
-    col1, col2 = st.columns(2)
-    with col1:
-        question_button = st.button(
-            "Generate Question", key="question_button", use_container_width=True
-        )
-    with col2:
-        answer_button = st.button(
-            "Show Answer", key="answer_button", use_container_width=True
-        )
-    st.markdown("<br>", unsafe_allow_html=True)
-    st.markdown("<br>", unsafe_allow_html=True)
-    st.markdown("<br>", unsafe_allow_html=True)
+    question_button = st.button(
+        "Generate Question", key="question_button", use_container_width=True
+    )
 
+    st.markdown("<br>", unsafe_allow_html=True)    
+    
     # Initialize session state variables if not already initialized
     if "question_indices" not in st.session_state:
         st.session_state.question_indices = []
+
+    # Flip card CSS
+    flip_card_css = """
+    <style>
+    .flip-card {
+      background-color: transparent;
+      width: 100%;
+      height: 100px;
+      perspective: 1000px;
+      margin: 0 auto;
+    }
+
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    .flip-card-front {
+      background-color: red;
+      color: black;
+    }
+
+    .flip-card-back {
+      background-color: blue;
+      color: white;
+      transform: rotateY(180deg);
+    }
+    </style>
+    """
+
+    st.markdown(flip_card_css, unsafe_allow_html=True)
 
     # Question and answer logic
     if question_button:
@@ -49,8 +96,15 @@ def display_flashcard_quiz():
         st.session_state.question_index = question_index        
         st.markdown(
             f"""
-            <div style='text-align: center; border: 1px solid #ccc; padding: 10px; border-radius: 5px;'>
-                <h2>{df.iloc[question_index, 1]}</h2>
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <h2>{df.iloc[question_index, 1]}</h2>
+                </div>
+                <div class="flip-card-back">
+                  <h2>{df.iloc[question_index, 0]}</h2>
+                </div>
+              </div>
             </div>
             """,
             unsafe_allow_html=True
@@ -62,21 +116,7 @@ def display_flashcard_quiz():
         if len(st.session_state.question_indices) == len(df):
             st.session_state.question_indices = []
 
-        st.session_state.show_answer = False
 
-    if answer_button:
-        if "question_index" in st.session_state:
-            if not st.session_state.show_answer:
-                st.markdown(
-                    f"""
-                    <div style='text-align: center; border: 1px solid #ccc; padding: 10px; border-radius: 5px;'>
-                        <h2>{df.iloc[st.session_state.question_index, 0]}</h2>
-                    </div>
-                    """,
-                    unsafe_allow_html=True
-                )               
-                st.session_state.show_answer = True
-            else:
-                st.warning("Answer already shown. Generate a new question.")
-        else:
-            st.warning("Generate a question first.")
+
+# Run the function
+display_flashcard_quiz()
