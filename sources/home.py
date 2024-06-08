@@ -18,7 +18,7 @@ def display_home():
 
     
     
-    file_path = '1.xlsx'
+    file_path = 'sources/1.xlsx'
 
     display_table(file_path, 'hiragana', 'ひらがな Table')
     display_table(file_path, 'dakuon', 'だくおん Table')

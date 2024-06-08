@@ -4,7 +4,7 @@ import random
 
 def display_flashcard_quiz():
     # File and sheet details
-    excel_file = '1.xlsx'
+    excel_file = 'sources/1.xlsx'
     sheet_names = ['Data1', 'Data2', 'Data3', 'Data4', 'Data5', 'Data6', 'Data7','Data8', 'Data9', 'Data10', 'Data11', 'Data12', 'Data13', 'Verb']
     subheaders = ['だい １ か 📝', 'だい 2 か 📚', 'だい 3 か 🗒️', 'だい 4 か 🖋️', 'だい 5 か 📖', 'だい 6 か 📜', 'だい 7 か 📚','だい 8 か 📖', 'だい 9 か 📝', 'だい 10 か 📜', 'だい 11 か 📝', 'だい 12 か 📚', 'だい 13 か 🗒️', 'どうし 🖋️']
 

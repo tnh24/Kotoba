@@ -1,42 +1,33 @@
 import streamlit as st
-from meaning import display_meaning
-from grammar import display_grammar
-from home import display_home
-from flashcard import display_flashcard_quiz
+from sources import home, meaning, grammar, flashcard
 
 # Set page configuration
-st.set_page_config(page_title='Minano Nihongo', layout='wide', page_icon= '🇯🇵')
+st.set_page_config(page_title='Minano Nihongo', layout='wide', page_icon='🇯🇵')
 
 # Set header
 st.markdown("<h1 style='text-align: center;'>🧠 みんなの日本語 🧠</h1>", unsafe_allow_html=True)
 
-#st.markdown("<br>", unsafe_allow_html=True)
 # Sidebar for navigation
-selected_module = st.sidebar.selectbox("Choose Module 🛰️", ["Home 🛖", "Meaning 🎑", "Grammar 🎫", "Flash Card Quiz 🧠"])
-
-#st.sidebar.markdown("---")
+selected_module = st.sidebar.selectbox(
+    "Choose Module 🛰️",
+    ["Home 🛖", "Meaning 🎑", "Grammar 🎫", "Flash Card Quiz 🧠"]
+)
 
 # Display selected module
 if selected_module == "Home 🛖":
-    display_home()
+    home.display_home()
     st.balloons()
-    
 elif selected_module == "Meaning 🎑":
-    display_meaning()
+    meaning.display_meaning()
     st.balloons()
-    
 elif selected_module == "Grammar 🎫":
-    display_grammar()
+    grammar.display_grammar()
     st.balloons()
-
 elif selected_module == "Flash Card Quiz 🧠":
-    display_flashcard_quiz()
-    
-    
+    flashcard.display_flashcard_quiz()
 
-st.sidebar.image("nihon.jpg",)
-
-# Developer info with an emoji
+# Sidebar image and developer info
+st.sidebar.image("sources/nihon.jpg")
 st.sidebar.markdown("Developed By [Thet Naung Hset](https://www.facebook.com/KoHset7k) 💻")
 st.sidebar.markdown("© 2024 Thet Naung Hset. All rights reserved. 🚀")
 
@@ -60,7 +51,6 @@ footer = """
         display: none;
     }
     </style>
-    
-    """
+"""
 
 st.markdown(footer, unsafe_allow_html=True)
