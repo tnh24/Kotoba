@@ -40,7 +40,7 @@ def display_flashcard_quiz():
     .flip-card {
       background-color: transparent;
       width: 100%;
-      height: 120px;
+      height: 200px;
       perspective: 1000px;
       margin: 0 auto;
     }
