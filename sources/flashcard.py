@@ -127,4 +127,5 @@ def display_flashcard_quiz():
         if len(st.session_state.question_indices) == len(df):
             st.session_state.question_indices = []
 
-
+    st.markdown("<br>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center;'>Hover over Or Tab the card to flip and see the answer.</p>", unsafe_allow_html=True)
