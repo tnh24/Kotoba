@@ -31,7 +31,7 @@ def display_home():
     display_table(file_path, 'kyouon', 'かたかな ようおん Table', height=422)
 
     st.write("""
-    	The left sidebar contains Options for **Meaning & Grammar**.
+    	The left sidebar contains Options for **Meaning, Grammar & FlashCard Quiz**.
     """)
     st.markdown("---")
 
