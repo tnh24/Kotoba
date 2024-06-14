@@ -3,9 +3,9 @@ import pandas as pd
 
 def display_grammar():
     # File and sheet details
-    excel_file = 'sources/1.xlsx'
-    sheet_names = ['Bonpoe1', 'Bonpoe2', 'Bonpoe3', 'Bonpoe4', 'Bonpoe5', 'Bonpoe6', 'Bonpoe7']
-    subheaders = ['だい １ か 📝', 'だい 2 か 📚', 'だい 3 か 🗒️', 'だい 4 か 🖋️', 'だい 5 か 📖', 'だい 6 か 📜', 'だい 7 か 📚']
+    excel_file = 'sources/1.xlsx' ##sources/
+    sheet_names = ['Bonpoe1', 'Bonpoe2', 'Bonpoe3', 'Bonpoe4', 'Bonpoe5', 'Bonpoe6', 'Bonpoe7', 'Bonpoe8']
+    subheaders = ['だい １ か 📝', 'だい 2 か 📚', 'だい 3 か 🗒️', 'だい 4 か 🖋️', 'だい 5 か 📖', 'だい 6 か 📜', 'だい 7 か 📚', 'だい 8 か 🖋️']
 
     # Sidebar for navigation
     selected_subheader = st.sidebar.selectbox("Choose Lesson 📘", subheaders)
@@ -29,3 +29,6 @@ def display_grammar():
 
     st.markdown("---")
     st.balloons()
+
+if __name__ == '__main__':
+    display_grammar()
