@@ -1,5 +1,5 @@
 import streamlit as st
-from sources import home, meaning, grammar, flashcard
+from sources import home, meaning, kanji, grammar, flashcard
 
 # Set page configuration
 st.set_page_config(page_title='Minano Nihongo', layout='wide', page_icon='🇯🇵')
@@ -10,7 +10,7 @@ st.markdown("<h1 style='text-align: center;'>🧠 みんなの日本語 🧠</h1
 # Sidebar for navigation
 selected_module = st.sidebar.selectbox(
     "Choose Module 🛰️",
-    ["Home 🛖", "Meaning 🎑", "Grammar 🎫", "Flash Card Quiz 🧠"]
+    ["Home 🛖", "Meaning 🎑", "Kanji 📚", "Grammar 🎫", "Flash Card Quiz 🧠"]
 )
 
 # Display selected module
@@ -19,6 +19,9 @@ if selected_module == "Home 🛖":
     st.balloons()
 elif selected_module == "Meaning 🎑":
     meaning.display_meaning()
+    st.balloons()
+elif selected_module == "Kanji 📚":
+    kanji.display_kanji()
     st.balloons()
 elif selected_module == "Grammar 🎫":
     grammar.display_grammar()
