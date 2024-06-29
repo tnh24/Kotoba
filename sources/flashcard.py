@@ -18,13 +18,13 @@ def display_flashcard_quiz():
     ]
 
     # Load data from each sheet
-    dfs = {subheader: pd.read_excel(excel_file, sheet_name=sheet, usecols='B:C', header=0) for subheader, sheet in zip(subheaders, sheet_names)}
+    dfs = {subheader: pd.read_excel(excel_file, sheet_name=sheet, usecols='B:D' if sheet == 'Kanji' else 'B:C', header=0) for subheader, sheet in zip(subheaders, sheet_names)}
 
     # Sidebar for navigation
     selected_subheader = st.sidebar.selectbox("Choose Lesson 📘", subheaders)
 
     # Display header and subheader
-    st.markdown("<h2 style='text-align: center;'>📚ことば📚</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='text-align: center;'>📚 感じ 📚</h2>", unsafe_allow_html=True)
     st.subheader(selected_subheader)
     st.markdown("<br>", unsafe_allow_html=True)
 
@@ -83,6 +83,7 @@ def display_flashcard_quiz():
       background-color: blue;
       color: white;
       transform: rotateY(180deg);
+      flex-direction: column;
     }
     </style>
     """
@@ -105,21 +106,39 @@ def display_flashcard_quiz():
         st.session_state.question_index = question_index
 
         # Display the flashcard
-        st.markdown(
-            f"""
-            <div class="flip-card">
-              <div class="flip-card-inner">
-                <div class="flip-card-front">
-                  <h2>{df.iloc[question_index, 1]}</h2>
+        if selected_subheader == '感じ ５０ 📝':  # Kanji sheet
+            st.markdown(
+                f"""
+                <div class="flip-card">
+                  <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                      <h2>{df.iloc[question_index, 1]}</h2>
+                    </div>
+                    <div class="flip-card-back">
+                      <h2>{df.iloc[question_index, 0]}</h2>
+                      <h2>{df.iloc[question_index, 2]}</h2>     
+                    </div>                  
+                  </div>
                 </div>
-                <div class="flip-card-back">
-                  <h2>{df.iloc[question_index, 0]}</h2>
+                """,
+                unsafe_allow_html=True
+            )
+        else:
+            st.markdown(
+                f"""
+                <div class="flip-card">
+                  <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                      <h2>{df.iloc[question_index, 1]}</h2>
+                    </div>
+                    <div class="flip-card-back">
+                      <h2>{df.iloc[question_index, 0]}</h2>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
+                """,
+                unsafe_allow_html=True
+            )
         
         # Add the displayed question index to the list
         st.session_state.question_indices.append(question_index)
@@ -129,6 +148,6 @@ def display_flashcard_quiz():
             st.session_state.question_indices = []
 
         st.markdown("<br>", unsafe_allow_html=True)
-        st.markdown("<p style='text-align: center;'>Hover over Or Tab the card to flip and see the answer.</p>", unsafe_allow_html=True)
+        st.markdown("<p style='text-align: center;'>Hover over Or Tap the card to flip and see the answer.</p>", unsafe_allow_html=True)
 
-    
+display_flashcard_quiz()
