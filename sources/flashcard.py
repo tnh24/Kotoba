@@ -8,23 +8,26 @@ def display_flashcard_quiz():
     sheet_names = [
         'Data1', 'Data2', 'Data3', 'Data4', 'Data5', 'Data6', 
         'Data7', 'Data8', 'Data9', 'Data10', 'Data11', 'Data12', 
-        'Data13','Data14','Data15', 'Verb', 'Kanji'
+        'Data13','Data14','Data15', 'Verb', 'Kanji','Kanji2', 'Kanji3',
     ]
     subheaders = [
-        'だい １ か 📝', 'だい 2 か 📚', 'だい 3 か 🗒️', 'だい 4 か 🖋️', 'だい 5 か 📖', 
+        'だい 1 か 📝', 'だい 2 か 📚', 'だい 3 か 🗒️', 'だい 4 か 🖋️', 'だい 5 か 📖', 
         'だい 6 か 📜', 'だい 7 か 📚', 'だい 8 か 📖', 'だい 9 か 📝', 'だい 10 か 📜', 
         'だい 11 か 📝', 'だい 12 か 📚', 'だい 13 か 🗒️','だい 14 か 📜','だい 15 か 📖', 'どうし 🖋️',
-        '感じ ５０ 📝',
+        '感じ 50 📝','感じ 100 📝', '感じ 150 📝',
     ]
 
     # Load data from each sheet
-    dfs = {subheader: pd.read_excel(excel_file, sheet_name=sheet, usecols='B:D' if sheet == 'Kanji' else 'B:C', header=0) for subheader, sheet in zip(subheaders, sheet_names)}
+    dfs = {
+        subheader: pd.read_excel(excel_file, sheet_name=sheet, usecols='B:D' if '感じ' in subheader else 'B:C', header=0) 
+        for subheader, sheet in zip(subheaders, sheet_names)
+    }
 
     # Sidebar for navigation
     selected_subheader = st.sidebar.selectbox("Choose Lesson 📘", subheaders)
 
     # Display header and subheader
-    st.markdown("<h2 style='text-align: center;'>📚 感じ 📚</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='text-align: center;'>Flash Card Quiz</h2>", unsafe_allow_html=True)
     st.subheader(selected_subheader)
     st.markdown("<br>", unsafe_allow_html=True)
 
@@ -106,7 +109,7 @@ def display_flashcard_quiz():
         st.session_state.question_index = question_index
 
         # Display the flashcard
-        if selected_subheader == '感じ ５０ 📝':  # Kanji sheet
+        if '感じ' in selected_subheader:  # Kanji sheets
             st.markdown(
                 f"""
                 <div class="flip-card">
@@ -148,6 +151,6 @@ def display_flashcard_quiz():
             st.session_state.question_indices = []
 
         st.markdown("<br>", unsafe_allow_html=True)
-        st.markdown("<p style='text-align: center;'>Hover over Or Tap the card to flip and see the answer.</p>", unsafe_allow_html=True)
+        st.markdown("<p style='text-align: center;'>Hover over or tap the card to flip and see the answer.</p>", unsafe_allow_html=True)
 
 display_flashcard_quiz()

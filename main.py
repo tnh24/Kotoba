@@ -4,6 +4,7 @@ from sources import home, meaning, kanji, grammar, flashcard
 # Set page configuration
 st.set_page_config(page_title='Minano Nihongo', layout='wide', page_icon='🇯🇵')
 
+
 # Set header
 st.markdown("<h1 style='text-align: center;'>🧠 みんなの日本語 🧠</h1>", unsafe_allow_html=True)
 
